@@ -26,3 +26,11 @@ sodiumoxide = "0.2"
 hex = "0.4"
 criterion = "0.5"
 rand = "0.8"
+
+[[bench]]
+name = "hash_bench"
+harness = false
+
+[[bench]]
+name = "secretbox_bench"
+harness = false
