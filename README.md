@@ -48,20 +48,6 @@ flowchart TB
     Facade -. portable builds .-> Targets
 ```
 
-## Smart Contract Design
-
-This project is not a blockchain application, so there are no on-chain smart contracts to deploy.
-
-For compatibility with the requested project template, this section describes the API contract between modules:
-
-- `init` owns one-time initialization semantics.
-- `version` owns identity and version reporting.
-- `randombytes` owns entropy and deterministic test hooks.
-- `memory` owns secure allocation and zeroization behavior.
-- `secret_key`, `public_key`, `hashing`, `password`, and `advanced` own the cryptographic surface area.
-
-The contract is intentionally strict: every exported function should have clear preconditions, stable output formats, and test coverage for both success and failure modes.
-
 ## Inter-Contract Communication Flow
 
 ```mermaid
