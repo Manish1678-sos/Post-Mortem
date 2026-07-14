@@ -1,0 +1,24 @@
+[package]
+name = "libsodium_clone"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.84"
+license = "ISC"
+repository = "https://github.com/your-org/libsodium_clone"
+description = "A Rust-native cryptographic library modeled after libsodium's public API surface."
+readme = "README.md"
+keywords = ["cryptography", "libsodium", "rust", "security"]
+categories = ["cryptography"]
+
+[features]
+default = ["std"]
+std = []
+
+[dependencies]
+thiserror = "2"
+zeroize = { version = "1", features = ["alloc"] }
+getrandom = "0.3"
+subtle = "2"
+
+[dev-dependencies]
+hex = "0.4"
