@@ -209,6 +209,34 @@ cargo test -- --nocapture
 
 This is a strong hackathon demo because it shows that the Rust clone produces the same output as the reference implementation for the same inputs.
 
+## Validation and Benchmarking
+
+### Run parity tests
+
+```powershell
+cargo test -- --nocapture
+```
+
+### Run differential parity checks
+
+```powershell
+cargo test --test differential
+```
+
+### Run benchmarks
+
+```powershell
+cargo bench
+```
+
+### View architectural decisions
+
+See `DECISIONS.md` for trade-offs, implementation choices, and the reasoning behind the current Rust-first design.
+
+## Original libsodium suite validation
+
+This repository validates correctness against libsodium through `sodiumoxide` parity tests. For full upstream validation, run the original libsodium test suite in a Linux-compatible environment (Docker or WSL) and compare results.
+
 ## Repository Structure
 
 See [docs/repo-structure.md](docs/repo-structure.md) and [docs/architecture.md](docs/architecture.md) for the module plan and implementation boundaries.
