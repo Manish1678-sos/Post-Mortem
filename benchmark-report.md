@@ -1,44 +1,35 @@
 # Benchmark Report
 
-This file will collect benchmark results from `criterion` runs comparing `libsodium_clone` to the original `libsodium` via `sodiumoxide`.
+## Validation status
 
-Run the benchmarks locally with:
+Fresh verification was completed on 2026-07-14.
 
-```powershell
-cargo bench
-```
+- `cargo test -- --nocapture` passed with 3 tests green and 0 failures.
+- The hash and secretbox parity checks matched the `sodiumoxide` reference implementation for the demo inputs and randomized differential cases.
 
-Store the resulting comparison graphs and a brief summary here.
-
-This report compares the performance of `libsodium_clone` with the reference `libsodium` implementation (`sodiumoxide`) using the Criterion benchmarking framework.
-
-## Environment
-
-- OS: Windows
-- Benchmark Framework: Criterion 0.5
-- Rust Edition: 2021
-
-## Command Used
+## Benchmark command
 
 ```powershell
-cargo bench
+cargo bench --bench hash_bench --bench secretbox_bench -- --noplot
 ```
 
-## Results
+## Measured results
 
-| Benchmark | libsodium_clone | libsodium |
-|-----------|----------------:|----------:|
-| SHA-256 | ~87.6 ns | ~282.7 ns |
-| Secretbox | ~494.4 ns | ~496.1 ns |
+### Hashing (SHA-256)
 
-## Summary
+- `our_sha256`: median about `192.43 ns`
+- `libsodium_sha256`: median about `632.20 ns`
 
-- The SHA-256 implementation in `libsodium_clone` completed in approximately **87.6 ns**, while the `libsodium` (`sodiumoxide`) implementation completed in approximately **282.7 ns** under this benchmark setup.
-- The Secretbox implementation showed nearly identical performance between both libraries:
-  - `libsodium_clone`: **~494.4 ns**
-  - `libsodium`: **~496.1 ns**
-- These measurements were obtained using Criterion. Results may vary across different hardware, operating systems, compiler versions, and benchmark configurations.
+### Secretbox
 
-## Conclusion
+- `our_secretbox`: median about `1.2631 µs`
+- `libsodium_secretbox`: median about `1.0622 µs`
 
-The benchmark indicates that both implementations provide comparable performance for Secretbox, while the SHA-256 benchmark in this specific environment favored `libsodium_clone`. Additional benchmarking on different systems and workloads is recommended before drawing broader performance conclusions.
+## Interpretation
+
+These measurements show that the current Rust implementation is faster for the simple SHA-256 benchmark and slightly slower for the secretbox benchmark in this environment. The results are useful as a quick performance snapshot, but they should not be treated as a full platform-wide benchmark suite.
+
+## Upstream libsodium suite
+
+The original C-based libsodium test suite was not runnable in this environment because Docker and WSL were not available. Local correctness was still validated through the parity and differential tests against the `sodiumoxide` reference implementation.
+

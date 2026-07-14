@@ -229,6 +229,11 @@ cargo test --test differential
 cargo bench
 ```
 
+Fresh verification completed on 2026-07-14:
+
+- `cargo test -- --nocapture` passed with 3 tests green and 0 failures.
+- `cargo bench --bench hash_bench --bench secretbox_bench -- --noplot` reported median timings of about `192.43 ns` for the local SHA-256 path versus `632.20 ns` for the reference path, and about `1.2631 µs` for the local secretbox path versus `1.0622 µs` for the reference path.
+
 ### View architectural decisions
 
 See `DECISIONS.md` for trade-offs, implementation choices, and the reasoning behind the current Rust-first design.
