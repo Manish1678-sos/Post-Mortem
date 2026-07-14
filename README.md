@@ -1,8 +1,14 @@
+<img width="1536" height="1024" alt="ChatGPT Image Jul 14, 2026, 12_47_08 PM" src="https://github.com/user-attachments/assets/578a15c9-3c6e-4db9-99bc-7fd4afdcd695" />
+
+
+
 # libsodium_clone
 
 libsodium_clone is a Rust-native cryptographic library that mirrors the public API families, operational rules, and packaging expectations of libsodium.
 
 The project is designed for production use: explicit initialization, safe-by-default primitives, strict linting, cross-platform CI, and release automation are first-class concerns.
+
+# Original libsodium repo: [link](https://github.com/jedisct1/libsodium)
 
 ## Product Overview
 
